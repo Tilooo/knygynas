@@ -18,7 +18,7 @@ class Author(models.Model):
 
 class Book(models.Model):
      title = models.CharField(verbose_name='Pavadinimas', max_length=100)
-     summary = models.TextField(verbose_name='Aprasymas', max_length=200)
+     summary = models.TextField(verbose_name='Aprasymas', max_length=2000)
      isbn = models.CharField(verbose_name='ISBN', max_length=13)
      author = models.ForeignKey(to='Author', verbose_name='Autorius', on_delete=models.SET_NULL, null=True)
      genre = models.ManyToManyField(to='Genre', verbose_name='Zanras')
@@ -31,7 +31,9 @@ class BookInstance(models.Model):
      due_back = models.DateField(verbose_name='Bus prieinama', null=True, blank=True)
 
      def __str__(self):
-          return f'{self.uuid} ({self.due_back}) - {self.status}'
+          return f'{self.book.title} {self.uuid} ({self.due_back}) - {self.status}'
+
+
      LOAN_STATUS = (
           ('a', 'Administruojama'),
           ('p', 'Paimta'),
