@@ -5,12 +5,15 @@ import uuid
 class Genre (models.Model):
      name = models.CharField(verbose_name='Pavadinimas', max_length=50)
 
-     #def __str__(self):
-         #return self.name
+     def __str__(self):
+          return self.name
 
 class Author(models.Model):
      first_name = models.CharField(verbose_name='Vardas', max_length=50)
      last_name = models.CharField(verbose_name='Pavarde', max_length=50)
+
+     def __str__(self):
+          return f'{self.first_name} {self.last_name}'
 
 
 class Book(models.Model):
@@ -19,13 +22,16 @@ class Book(models.Model):
      isbn = models.CharField(verbose_name='ISBN', max_length=13)
      author = models.ForeignKey(to='Author', verbose_name='Autorius', on_delete=models.SET_NULL, null=True)
      genre = models.ManyToManyField(to='Genre', verbose_name='Zanras')
-
+     def __str__(self):
+          return f'{self.title} ({self.author}) '
 
 class BookInstance(models.Model):
      book = models.ForeignKey(to='Book', verbose_name='Knyga', on_delete=models.CASCADE)
      uuid = models.UUIDField(default=uuid.uuid4)
      due_back = models.DateField(verbose_name='Bus prieinama', null=True, blank=True)
 
+     def __str__(self):
+          return f'{self.uuid} ({self.due_back}) - {self.status}'
      LOAN_STATUS = (
           ('a', 'Administruojama'),
           ('p', 'Paimta'),
