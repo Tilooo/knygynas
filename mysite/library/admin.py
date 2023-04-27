@@ -1,8 +1,13 @@
 from django.contrib import admin
 from . import models
 
+class BookInstanceInline(admin.TabularInline):
+    model = models.BookInstance
+    extra = 0
+
 class BookAdmin(admin.ModelAdmin):
     list_display = ['title', 'isbn', 'author', 'display_genre']
+    inlines = [BookInstanceInline]
 class BookInstanceAdmin(admin.ModelAdmin):
     list_display = ['book', 'uuid', 'status', 'due_back']
     list_filter = ['status', 'due_back', 'book']
