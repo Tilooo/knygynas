@@ -32,6 +32,12 @@ class Book(models.Model):
      isbn = models.CharField(verbose_name='ISBN', max_length=13)
      author = models.ForeignKey(to='Author', verbose_name='Autorius', on_delete=models.SET_NULL, null=True)
      genre = models.ManyToManyField(to='Genre', verbose_name='Zanras')
+
+     def display_genre(self):
+         return ', '.join(genre.name for genre in self.genre.all())
+
+     display_genre.short_description = 'Zanrai'
+
      def __str__(self):
           return f'{self.title} ({self.author})'
 
