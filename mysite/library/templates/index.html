@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}HOME{% endblock%}
+
+{% block 'content' %}
+
+<h1>Sveiki atvykę į knygų rojų</h1>
+<p>šiuo metu turime:</p>
+<ul>
+    <li><strong>Knygų: </strong>{{ num_books }}</li>
+    <li><strong>Egzempliorių: </strong>{{ num_instances }}</li>
+    <li><strong>Autoriai: </strong>{{ num_authors }}</li>
+    <li><strong>Laisvų knygų: </strong>{{ num_instances_available }}</li>
+</ul>
+
+{% endblock%}

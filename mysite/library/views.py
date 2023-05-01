@@ -12,8 +12,8 @@ def index(request):
 
     context = {
         'num_books': num_books,
-        'num_instances': num_authors,
+        'num_instances': num_instances,
         'num_authors': num_authors,
         'num_instances_available': num_instances_available,
     }
-    return_render(request, 'index.html', context=context)
+    return render(request, 'index.html', context=context)
