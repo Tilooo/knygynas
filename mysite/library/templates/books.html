@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Knygos{% endblock %}
+
+{% block 'content' %}
+{% for book in books %}
+    <p>{{ book }}</p>
+<hr>
+{% endfor %}
+{% endblock %}
