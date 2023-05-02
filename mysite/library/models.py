@@ -50,7 +50,7 @@ class Book(models.Model):
          verbose_name_plural = 'Knygos'
 
 class BookInstance(models.Model):
-     book = models.ForeignKey(to='Book', verbose_name='Knyga', on_delete=models.CASCADE)
+     book = models.ForeignKey(to='Book', verbose_name='Knyga', on_delete=models.CASCADE, related_name='instances')
      uuid = models.UUIDField(default=uuid.uuid4)
      due_back = models.DateField(verbose_name='Bus prieinama', null=True, blank=True)
 

@@ -4,7 +4,9 @@
 
 {% block 'content' %}
 {% for book in books %}
+<a href="{{ book.id }}">
     <p>{{ book }}</p>
+</a>
 <hr>
 {% endfor %}
 {% endblock %}
