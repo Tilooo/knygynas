@@ -17,10 +17,10 @@ class BookInstanceAdmin(admin.ModelAdmin):
     list_editable = ['status', 'due_back']
     search_fields = ['uuid', 'book__title']
 
-    fieldsets = (
-        ('General', {'fields': ('uuid', 'book')}),
-        ('Availability', {'fields': ('status', 'due_back')}),
-    )
+   # fieldsets = (
+   #     ('General', {'fields': ('uuid', 'book')}),
+   #     ('Availability', {'fields': ('status', 'due_back')}),
+   # )
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'display_books']
