@@ -40,9 +40,10 @@
                clip-rule="evenodd"/>
        </svg>
       {{ user.get_username }}</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'my_books' %}">Mano knygos</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Atsijungti</a></li>
       {% else %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'login'%}">Prisijungti</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Prisijungti</a></li>
       {% endif %}
       <li>
         <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">

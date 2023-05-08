@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Mano Knygos{% endblock %}
+
+{% block 'content' %}
+
+<h1>Mano knygos:</h1>
+{% for book in my_books %}
+<p>{{ book }}</p>
+<hr>
+{% endfor %}
+{% endblock %}
