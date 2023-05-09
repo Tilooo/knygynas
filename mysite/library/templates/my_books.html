@@ -5,8 +5,9 @@
 {% block 'content' %}
 
 <h1>Paimtos knygos:</h1>
-{% for book in my_books %}
-<p class=" {% if book.is_overdue %}text-danger{% endif %}">{{ book }}</p>
+{% for instance in my_books %}
+<p><a href="{% url 'book' instance.book.id %}">{{ instance.book }}</a> - {{ instance.uuid }}<span class=" {% if instance.is_overdue %}text-danger{% endif %}"> ({{ instance.due_back }},
+    {{ instance.get_status_display }})</span></p>
 <hr>
 {% endfor %}
 {% endblock %}
