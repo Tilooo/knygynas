@@ -43,6 +43,7 @@
       <li class="nav-item"><a class="nav-link" href="{% url 'my_books' %}">Mano knygos</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Atsijungti</a></li>
       {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registruotis</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Prisijungti</a></li>
       {% endif %}
       <li>
@@ -63,6 +64,16 @@
 </ul>
 
 {% endcomment %}
+<br>
+<div class="container">
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'info' %}success{% endif %}" role="alert">
+                {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
 
 {# Cia konteineris, skirtas turiniui#}
 <br>
