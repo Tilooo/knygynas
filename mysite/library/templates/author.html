@@ -8,7 +8,7 @@
     <li><strong>Vardas: </strong>{{ author.first_name}}</li>
     <li><strong>Pavardė: </strong>{{ author.last_name}}</li>
 </ul>
-<p>{{ author.description }}</p>
+<p>{{ author.description | safe }}</p>
 <h2>Turime sias autoriaus knygas:</h2>
 <ol>
     {% for book in author.books.all %}
