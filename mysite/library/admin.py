@@ -25,8 +25,12 @@ class BookInstanceAdmin(admin.ModelAdmin):
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'display_books']
 
+class BookReviewAdmin(admin.ModelAdmin):
+    list_display = ('book', 'date_created', 'reviewer', 'content')
+
 # Register your models here.
 admin.site.register(models.Author, AuthorAdmin)
 admin.site.register(models.Genre)
 admin.site.register(models.Book, BookAdmin)
 admin.site.register(models.BookInstance, BookInstanceAdmin)
+admin.site.register(models.BookReview, BookReviewAdmin)

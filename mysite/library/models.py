@@ -60,12 +60,7 @@ class BookInstance(models.Model):
      due_back = models.DateField(verbose_name='Bus prieinama', null=True, blank=True)
      reader = models.ForeignKey(to=User, on_delete=models.SET_NULL, null=True, blank=True)
 
-     def __str__(self):
-          return f'{self.book.title} {self.uuid} ({self.due_back}) - {self.status}'
 
-     class Meta:
-         verbose_name = 'Knygos egzempliorius'
-         verbose_name_plural = 'Knygos egzemplioriai'
 
      LOAN_STATUS = (
           ('a', 'Administruojama'),
@@ -73,10 +68,30 @@ class BookInstance(models.Model):
           ('g', 'Galima paimti'),
           ('r', 'Rezervuota'),
      )
+
      status = models.CharField(verbose_name='Busena', max_length=1, choices=LOAN_STATUS, blank=True, default='a')
 
      def is_overdue(self):
          return self.due_back and date.today() > self.due_back
+
+     def __str__(self):
+          return f'{self.book.title} {self.uuid} ({self.due_back}) - {self.status}'
+
+     class Meta:
+         verbose_name = 'Knygos egzempliorius'
+         verbose_name_plural = 'Knygos egzemplioriai'
+
+
+class BookReview(models.Model):
+    book = models.ForeignKey('Book', verbose_name='Knyga', on_delete=models.SET_NULL, null=True, blank=True)
+    reviewer = models.ForeignKey(to=User, verbose_name='Autorius', on_delete=models.SET_NULL, null=True, blank=True)
+    date_created = models.DateTimeField(verbose_name='Data', auto_now_add=True)
+    content = models.TextField('Atsiliepimas', max_length=3000)
+
+    class Meta:
+        verbose_name = "Atsiliepimas"
+        verbose_name_plural = 'Atsiliepimai'
+        ordering = ['-date_created']
 
 
 
