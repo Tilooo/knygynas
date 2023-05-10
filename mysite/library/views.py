@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import User
 from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -124,6 +125,14 @@ def register(request):
         else:
             messages.error(request, 'Slaptažodžiai nesutampa!')
             return redirect('register')
-    return render(request, 'registration/register.html')
+    else:
+        return render(request, 'registration/register.html')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
+
+
+
 
 
